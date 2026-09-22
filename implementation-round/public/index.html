@@ -1,0 +1,54 @@
+<!-- public/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blink Messaging</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main id="login" class="login" hidden>
+      <h1>Sign in as</h1>
+      <ul id="login-users" class="login-users"></ul>
+    </main>
+
+    <div id="app" class="app" hidden>
+      <aside class="sidebar">
+        <header class="sidebar-header">
+          <div>
+            <strong id="me-name"></strong>
+            <a class="switch-user" href="/">Switch user</a>
+          </div>
+          <button id="new-group" type="button">New group</button>
+        </header>
+        <ul id="conversation-list" class="conversation-list"></ul>
+      </aside>
+
+      <section class="thread">
+        <header id="thread-header" class="thread-header" hidden></header>
+        <ol id="messages" class="messages"></ol>
+        <form id="composer" class="composer" hidden>
+          <input id="message-input" autocomplete="off" placeholder="Write a message" required />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+
+    <div id="error" class="error" role="alert" hidden></div>
+
+    <dialog id="group-dialog" class="dialog">
+      <form id="group-form">
+        <h2>New group</h2>
+        <ul id="group-members" class="group-members"></ul>
+        <div class="dialog-actions">
+          <button id="group-cancel" type="button" class="secondary">Cancel</button>
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

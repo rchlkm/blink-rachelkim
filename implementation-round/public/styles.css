@@ -1,0 +1,286 @@
+/* public/styles.css */
+:root {
+  --bg: #ffffff;
+  --surface: #f5f6f8;
+  --border: #e2e5ea;
+  --text: #1c2026;
+  --muted: #6b7380;
+  --accent: #2f6fed;
+  --accent-text: #ffffff;
+  --bubble: #eceff3;
+  --selected: #e3ebfc;
+  --danger: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171c;
+    --surface: #1b1f26;
+    --border: #2b313b;
+    --text: #e8eaee;
+    --muted: #9099a6;
+    --accent: #4d86f7;
+    --bubble: #262c36;
+    --selected: #24324d;
+    --danger: #f2837a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-text);
+  cursor: pointer;
+}
+
+button.secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.login {
+  max-width: 360px;
+  margin: 64px auto;
+  padding: 0 16px;
+}
+
+.login-users {
+  display: grid;
+  gap: 8px;
+}
+
+.login-users a {
+  display: block;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.login-users a:hover {
+  background: var(--surface);
+}
+
+.app {
+  position: relative;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.sidebar-header,
+.thread-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.thread-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.switch-user {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.conversation-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.conversation-item {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.conversation-item.selected {
+  background: var(--selected);
+}
+
+.conversation-item .title {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.conversation-item .time,
+.conversation-item .preview {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.conversation-item .preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: var(--bubble);
+  overflow-wrap: anywhere;
+  align-self: flex-start;
+}
+
+.message.mine {
+  background: var(--accent);
+  color: var(--accent-text);
+  align-self: flex-end;
+}
+
+.message .sender {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.message .time {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.empty {
+  margin: auto;
+  color: var(--muted);
+}
+
+.composer {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.composer input {
+  flex: 1;
+}
+
+.error {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  padding: 10px 16px;
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--danger);
+  transform: translateX(-50%);
+}
+
+.dialog {
+  width: 320px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.dialog h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.group-members {
+  display: grid;
+  gap: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.group-members label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "blink-messaging",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env src/server.js",
+    "dev": "nodemon --watch src --exec \"node --env-file=.env\" src/server.js",
+    "db:schema": "node --env-file=.env scripts/run-sql.js db/schema.sql",
+    "db:seed": "node --env-file=.env scripts/run-sql.js db/seed.sql",
+    "test": "node --env-file=.env --test \"test/**/*.test.js\""
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
